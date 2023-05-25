@@ -14,3 +14,18 @@ updates:
     # ignore:
     #   - dependency-name: "some-package-name"
     #     versions: ["1.2.3"]
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "npm: "
+
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    registry: "ghcr.io"
+    allow:
+      - dependency-name: "dxatscale/sfpowerscripts:latest"
+    commit-message:
+      # Prefix all commit messages with "[docker] " (no colon, but a trailing whitespace)
+      prefix: "docker: "
