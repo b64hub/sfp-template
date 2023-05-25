@@ -1,6 +1,6 @@
-This repository is an opinionated verison of the dx@scale template. It to be used in github and is shipped with a devcontainer installed with all the dependencies. 
+This repository is an opinionated verison of the dx@scale template. It's to be used in github and is shipped with a devcontainer installed with all the dependencies. 
 
-The rest of this text comes from the dx@scale template.
+The rest of this readme comes from the dx@scale template.
 
 **Development**
 
