@@ -25,7 +25,7 @@ updates:
     open-pull-requests-limit: 5
     registry: "ghcr.io"
     allow:
-      - dependency-name: "dxatscale/sfpowerscripts:latest"
+      - dependency-name: "dxatscale/sfpowerscripts"
     commit-message:
       # Prefix all commit messages with "[docker] " (no colon, but a trailing whitespace)
       prefix: "docker: "
