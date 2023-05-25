@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    allow:
+      - dependency-type: "direct"
+        update-types: ["patch", "minor", "major"]
+      - dependency-type: "dev"
+        update-types: ["patch", "minor", "major"]
+    # ignore:
+    #   - dependency-name: "some-package-name"
+    #     versions: ["1.2.3"]
