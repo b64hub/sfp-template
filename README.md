@@ -1,4 +1,6 @@
-This repository contains all the core salesforce code and metadata for project <xxxx>
+This repository is an opinionated verison of the dx@scale template. It to be used in github and is shipped with a devcontainer installed with all the dependencies. 
+
+The rest of this text comes from the dx@scale template.
 
 **Development**
 
