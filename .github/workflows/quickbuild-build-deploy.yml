@@ -19,7 +19,7 @@ jobs:
   deploy-dev:
     uses: b64hub/dx-actions/.github/workflows/deploy.yml@main
     with:
-      environment: dev
+      org-alias: dev
       datadog: true
     secrets:
       ENV_SFDX_AUTH_URL: ${{ secrets.DEV_SFDX_AUTH_URL }}
