@@ -7,6 +7,11 @@ on:
         description: "Username of the scratch org"
         required: true
 
+env:
+  SFPOWERSCRIPTS_DATADOG: "true"
+  SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
+  SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
+
 jobs:
   delete-scratchorg:
     name: "Return a used scratch org to the pool ${{ github.event.inputs.username }}"
@@ -21,7 +26,3 @@ jobs:
 
       - name: "Delete scratch org ${{ github.event.inputs.username }}"
         run: "sfdx sfpowerscripts:pool:org:delete -u ${{ github.event.inputs.username }} -v devhub"
-    env:
-      SFPOWERSCRIPTS_DATADOG: "true"
-      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
-      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"

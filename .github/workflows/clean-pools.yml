@@ -13,9 +13,8 @@ jobs:
     uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
     with:
       pool-tag: ${{ matrix.pool-tag }}
+      datadog: true
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
-    env:
-      SFPOWERSCRIPTS_DATADOG: "true"
-      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
-      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
+      DATADOG_APP_KEY: "${{ secrets.DATADOG_APP_KEY }}"
+      DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
