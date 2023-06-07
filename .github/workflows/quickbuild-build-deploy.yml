@@ -14,19 +14,19 @@ env:
 
 jobs:
   quickbuild:
-    with: b64hub/dx-actions/.github/workflows/quickbuild.yml@main
+    uses: b64hub/dx-actions/.github/workflows/quickbuild.yml@main
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
 
   deploy-dev:
-    with: b64hub/dx-actions/.github/workflows/deploy.yml@main
-    uses:
+    uses: b64hub/dx-actions/.github/workflows/deploy.yml@main
+    with:
       org-alias: dev
     secrets:
       ENV_SFDX_AUTH_URL: ${{ secrets.DEV_SFDX_AUTH_URL }}
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
 
   build-publish:
-    with: b64hub/dx-actions/.github/workflows/build-publish.yml@main
+    uses: b64hub/dx-actions/.github/workflows/build-publish.yml@main
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
