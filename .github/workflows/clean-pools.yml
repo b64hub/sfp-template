@@ -1,10 +1,9 @@
-name: "CI Pipeline - Release Build - Auto Triggered"
+name: "Scratch Org Pool Cleaner - Auto Scheduled"
 
 on:
-  push:
-    branches:
-      - release/**
   workflow_dispatch:
+  schedule:
+    - cron: "0 13 * * *"
 
 #Set the environment variables for tracking metrics
 #env:
@@ -15,7 +14,16 @@ on:
 #SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
 
 jobs:
-  build-publish:
-    with: b64hub/dx-actions/.github/workflows/build-publish.yml@main
+  ci-pool:
+    uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
+    with:
+      pool-tag: ci
+    secrets:
+      DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+
+  dev-pool:
+    uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
+    with:
+      pool-tag: dev
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
