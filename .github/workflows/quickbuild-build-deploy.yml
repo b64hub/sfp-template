@@ -4,19 +4,17 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
-
-env:
-  SFPOWERSCRIPTS_DATADOG: "true"
-  SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_HOST }}"
-  SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
 jobs:
   quickbuild:
     uses: b64hub/dx-actions/.github/workflows/quickbuild.yml@main
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_HOST }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
   deploy-dev:
     uses: b64hub/dx-actions/.github/workflows/deploy.yml@main
@@ -25,8 +23,16 @@ jobs:
     secrets:
       ENV_SFDX_AUTH_URL: ${{ secrets.DEV_SFDX_AUTH_URL }}
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_HOST }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
   build-publish:
     uses: b64hub/dx-actions/.github/workflows/build-publish.yml@main
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_HOST }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
