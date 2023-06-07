@@ -16,5 +16,5 @@ jobs:
       datadog: true
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
-      DATADOG_APP_KEY: "${{ secrets.DATADOG_APP_KEY }}"
+      DATADOG_HOST: "${{ vars.DATADOG_HOST }}"
       DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
