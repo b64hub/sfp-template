@@ -6,16 +6,12 @@ on:
       - release/**
   workflow_dispatch:
 
-#Set the environment variables for tracking metrics
-#env:
-#SFPOWERSCRIPTS_NEWRELIC: 'true'
-#SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INSIGHT_INSERT_KEYS }}'
-#SFPOWERSCRIPTS_DATADOG: 'true'
-#SFPOWERSCRIPTS_DATADOG_HOST: '${{ secrets.DATADOG_HOST }}'
-#SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
-
 jobs:
   build-publish:
     with: b64hub/dx-actions/.github/workflows/build-publish.yml@main
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"

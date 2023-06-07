@@ -5,25 +5,17 @@ on:
   schedule:
     - cron: "0 13 * * *"
 
-#Set the environment variables for tracking metrics
-#env:
-#SFPOWERSCRIPTS_NEWRELIC: 'true'
-#SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INSIGHT_INSERT_KEYS }}'
-#SFPOWERSCRIPTS_DATADOG: 'true'
-#SFPOWERSCRIPTS_DATADOG_HOST: '${{ secrets.DATADOG_HOST }}'
-#SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
-
 jobs:
-  ci-pool:
+  clean-pool:
+    strategy:
+      matrix:
+        pool-tag: [ci, dev]
     uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
     with:
-      pool-tag: ci
+      pool-tag: ${{ matrix.pool-tag }}
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
-
-  dev-pool:
-    uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
-    with:
-      pool-tag: dev
-    secrets:
-      DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"

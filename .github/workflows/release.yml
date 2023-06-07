@@ -7,14 +7,6 @@ on:
         description: "Path to release definition file"
         required: true
 
-#Set the environment variables for tracking metrics
-#env:
-#SFPOWERSCRIPTS_NEWRELIC: 'true'
-#SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INSIGHT_INSERT_KEYS }}'
-#SFPOWERSCRIPTS_DATADOG: 'true'
-#SFPOWERSCRIPTS_DATADOG_HOST: '${{ secrets.DATADOG_HOST }}'
-#SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
-
 jobs:
   sit-release:
     uses: b64hub/dx-actions/.github/workflows/release.yml@main
@@ -23,19 +15,27 @@ jobs:
       release-def-path: ${{ github.event.inputs.release-def-path }}
     secrets:
       ENV_SFDX_AUTH_URL: ${{ secrets.SIT_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
-  uat-release:
+  release:
+    strategy:
+      matrix:
+        env: [dev, prod]
+        include:
+          - env: dev
+            sfdxurl_secret: ${{ secrets.UAT_SFDX_AUTH_URL }}
+          - env: prod
+            sfdxurl_secret: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
     uses: b64hub/dx-actions/.github/workflows/release.yml@main
     if: contains(github.ref,'refs/heads/release')
     with:
       release-def-path: ${{ github.event.inputs.release-def-path }}
     secrets:
-      ENV_SFDX_AUTH_URL: ${{ secrets.UAT_SFDX_AUTH_URL }}
-
-  prod-release:
-    uses: b64hub/dx-actions/.github/workflows/release.yml@main
-    if: contains(github.ref,'refs/heads/release')
-    with:
-      release-def-path: ${{ github.event.inputs.release-def-path }}
-    secrets:
-      ENV_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+      ENV_SFDX_AUTH_URL: ${{ secrets[matrix.sfdxurl_secret] }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"

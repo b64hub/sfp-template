@@ -11,18 +11,17 @@ on:
     - cron: "0 14 * * *"
 
 jobs:
-  ci-pool:
+  prepare-pool:
+    strategy:
+      matrix:
+        pool-tag: [ci, dev]
     uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
     with:
-      pool-tag: ci
+      pool-tag: ${{ matrix.pool-tag }}
       git-ref: ${{ inputs.git-ref }}
     secrets:
       DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
-
-  dev-pool:
-    uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
-    with:
-      pool-tag: dev
-      git-ref: ${{ inputs.git-ref }}
-    secrets:
-      DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+    env:
+      SFPOWERSCRIPTS_DATADOG: "true"
+      SFPOWERSCRIPTS_DATADOG_HOST: "${{ secrets.DATADOG_APP_KEY }}"
+      SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
