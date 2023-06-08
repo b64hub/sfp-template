@@ -1,16 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/dxatscale/sfpowerscripts/0df8d78ae327d03bf5b2e965dcced459066abb83/packages/core/resources/pooldefinition.schema.json",
-  "tag": "ci",
-  "maxAllocation": 5,
+  "tag": "snapshot",
+  "maxAllocation": 20,
   "expiry": 2,
-  "batchSize": 5,
+  "batchSize": 10,
   "configFilePath": "config/project-scratch-def.json",
   "enableSourceTracking": false,
-  "snapshotPool": "snapshot",
-  "installAll": true,
-  "fetchArtifacts": {
-    "npm": {
-      "scope": "@org-name"
-    }
-  }
+  "installAll": false
 }

@@ -9,7 +9,7 @@ jobs:
   clean-pool:
     strategy:
       matrix:
-        pool-tag: [ci, dev]
+        pool-tag: [snapshot, ci, dev]
     uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
     with:
       pool-tag: ${{ matrix.pool-tag }}

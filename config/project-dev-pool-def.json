@@ -1,19 +1,19 @@
 {
-    "$schema": "https://raw.githubusercontent.com/Accenture/sfpowerscripts/develop/packages/sfpowerscripts-cli/resources/schemas/pooldefinition.schema.json",
-    "tag": "dev",
-    "maxAllocation": 5,
-    "expiry": 10,
-    "batchSize": 5,
-    "configFilePath": "config/project-scratch-def.json",
-    "relaxAllIPRanges": true,
-    "enableSourceTracking": true,
-    "retryOnFailure": true,
-    "succeedOnDeploymentErrors": true,
-    "installAll": true,
-    "fetchArtifacts": {
-        "npm": {
-          "scope": "@org-name"
-        }
-      }
-   
+  "$schema": "https://raw.githubusercontent.com/dxatscale/sfpowerscripts/0df8d78ae327d03bf5b2e965dcced459066abb83/packages/core/resources/pooldefinition.schema.json",
+  "tag": "dev",
+  "maxAllocation": 15,
+  "expiry": 7,
+  "batchSize": 5,
+  "configFilePath": "config/project-scratch-def.json",
+  "relaxAllIPRanges": true,
+  "enableSourceTracking": true,
+  "retryOnFailure": true,
+  "succeedOnDeploymentErrors": true,
+  "snapshotPool": "snapshot",
+  "installAll": true,
+  "fetchArtifacts": {
+    "npm": {
+      "scope": "@org-name"
+    }
+  }
 }
