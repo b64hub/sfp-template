@@ -30,6 +30,9 @@ jobs:
 
   build-publish:
     uses: b64hub/dx-actions/.github/workflows/build-publish.yml@main
+    permissions:
+      packages: write
+      contents: read
     with:
       datadog: true
     secrets:
