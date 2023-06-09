@@ -32,7 +32,7 @@ jobs:
     uses: b64hub/dx-actions/.github/workflows/build-publish.yml@main
     permissions:
       packages: write
-      contents: read
+      contents: write
     with:
       datadog: true
     secrets:
