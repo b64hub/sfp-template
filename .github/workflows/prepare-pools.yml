@@ -12,12 +12,9 @@ on:
 
 jobs:
   prepare-snapshot-pool:
-    strategy:
-      matrix:
-        pool-tag: [snapshot]
     uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
     with:
-      pool-tag: ${{ matrix.pool-tag }}
+      pool-tag: snapshot
       git-ref: ${{ inputs.git-ref }}
       datadog: true
     secrets:
