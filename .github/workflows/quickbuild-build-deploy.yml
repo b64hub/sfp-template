@@ -18,6 +18,7 @@ jobs:
 
   deploy-dev:
     uses: b64hub/dx-actions/.github/workflows/deploy.yml@main
+    needs: quickbuild
     with:
       org-alias: dev
       datadog: true
