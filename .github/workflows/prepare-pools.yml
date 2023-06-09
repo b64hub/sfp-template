@@ -11,10 +11,25 @@ on:
     - cron: "0 14 * * *"
 
 jobs:
-  prepare-pool:
+  prepare-snapshot-pool:
     strategy:
       matrix:
-        pool-tag: [snapshot, ci, dev]
+        pool-tag: [snapshot]
+    uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
+    with:
+      pool-tag: ${{ matrix.pool-tag }}
+      git-ref: ${{ inputs.git-ref }}
+      datadog: true
+    secrets:
+      DEVHUB_SFDX_AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
+      DATADOG_HOST: "${{ vars.DATADOG_HOST }}"
+      DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
+
+  prepare-pools:
+    needs: prepare-snapshot-pool
+    strategy:
+      matrix:
+        pool-tag: [ci, dev]
     uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
     with:
       pool-tag: ${{ matrix.pool-tag }}
