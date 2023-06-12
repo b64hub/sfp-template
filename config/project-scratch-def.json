@@ -1,27 +1,28 @@
 {
-    "orgName": "DX@Scale Demo Org",
-    "edition": "Developer",
-    "hasSampleData": false,
-    "features": ["Communities", "Walkthroughs", "EnableSetPasswordInApi"],
-    "settings": {
-        "communitiesSettings": {
-            "enableNetworksEnabled": true
-        },
-        "experienceBundleSettings": {
-            "enableExperienceBundleMetadata": true
-        },
-        "lightningExperienceSettings": {
-            "enableS1DesktopEnabled": true
-        },
-        "mobileSettings": {
-            "enableS1EncryptedStoragePref2": false
-        },
-        "pathAssistantSettings": {
-            "pathAssistantEnabled": true
-        },
-        "userEngagementSettings": {
-            "enableOrchestrationInSandbox": true,
-            "enableShowSalesforceUserAssist": false
-        }
+  "orgName": "DX@Scale Demo Org",
+  "edition": "Developer",
+  "hasSampleData": false,
+  "features": ["Communities", "Walkthroughs", "EnableSetPasswordInApi"],
+  "language": "en_US",
+  "settings": {
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "pathAssistantSettings": {
+      "pathAssistantEnabled": true
+    },
+    "userEngagementSettings": {
+      "enableOrchestrationInSandbox": true,
+      "enableShowSalesforceUserAssist": false
     }
+  }
 }
