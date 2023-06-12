@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   schedule:
     # Every 30 minutes
-    - cron: "30 * * * *"
+    # - cron: "30 * * * *"
 
 env:
   SFPOWERSCRIPTS_DATADOG: "true"

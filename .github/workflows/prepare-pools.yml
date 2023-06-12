@@ -7,8 +7,8 @@ on:
         description: "Commit Id from where the pools should be created"
         required: false
         default: "main"
-  schedule:
-    - cron: "0 14 * * *"
+  # schedule:
+  #   - cron: "0 14 * * *"
 
 jobs:
   prepare-snapshot-pool:
