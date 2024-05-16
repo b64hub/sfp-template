@@ -97,7 +97,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-# sfdx autocomplete setup
-SFDX_AC_BASH_SETUP_PATH=/sfdx_plugins/.cache/sfdx/autocomplete/bash_setup && test -f $SFDX_AC_BASH_SETUP_PATH && source $SFDX_AC_BASH_SETUP_PATH;
+
 # sf autocomplete setup
-SF_AC_BASH_SETUP_PATH=/sfdx_plugins/.cache/sf/autocomplete/bash_setup && test -f $SF_AC_BASH_SETUP_PATH && source $SF_AC_BASH_SETUP_PATH;
+SF_AC_BASH_SETUP_PATH=/sf_plugins/.cache/sf/autocomplete/bash_setup && test -f $SF_AC_BASH_SETUP_PATH && source $SF_AC_BASH_SETUP_PATH;
