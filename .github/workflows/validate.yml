@@ -1,11 +1,11 @@
 name: "PR Validation - Auto Triggered"
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main
-      - release/**
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   branches:
+  #     - main
+  #     - release/**
 
   workflow_dispatch:
 
