@@ -9,7 +9,7 @@ on:
 
 jobs:
   sit-release:
-    uses: b64hub/dx-actions/.github/workflows/release.yml@main
+    uses: b64hub/sf-actions/.github/workflows/release.yml@main
     if: github.ref == 'refs/heads/main' || contains(github.ref,'refs/heads/release')
     with:
       release-def-path: ${{ github.event.inputs.release-def-path }}
@@ -29,7 +29,7 @@ jobs:
             sfdxurl_secret: ${{ secrets.UAT_SFDX_AUTH_URL }}
           - env: prod
             sfdxurl_secret: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
-    uses: b64hub/dx-actions/.github/workflows/release.yml@main
+    uses: b64hub/sf-actions/.github/workflows/release.yml@main
     if: contains(github.ref,'refs/heads/release')
     with:
       release-def-path: ${{ github.event.inputs.release-def-path }}

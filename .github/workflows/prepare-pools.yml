@@ -12,7 +12,7 @@ on:
 
 jobs:
   prepare-snapshot-pool:
-    uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
+    uses: b64hub/sf-actions/.github/workflows/prepare-pool.yml@main
     with:
       pool-tag: snapshot
       git-ref: ${{ inputs.git-ref }}
@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         pool-tag: [ci, dev]
-    uses: b64hub/dx-actions/.github/workflows/prepare-pool.yml@main
+    uses: b64hub/sf-actions/.github/workflows/prepare-pool.yml@main
     with:
       pool-tag: ${{ matrix.pool-tag }}
       git-ref: ${{ inputs.git-ref }}
