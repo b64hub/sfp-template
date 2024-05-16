@@ -18,7 +18,7 @@ jobs:
   validate:
     name: "Validate Changed Packages"
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:latest
+    container: ghcr.io/flxbl-io/sfp-rc:release-Mar24
 
     steps:
       - uses: actions/checkout@v2
