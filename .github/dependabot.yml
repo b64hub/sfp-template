@@ -7,10 +7,10 @@ updates:
     open-pull-requests-limit: 5
     target-branch: "main"
     allow:
+      - dependency-type: "development"
+        # Removed the update-types field as it is not supported here
       - dependency-type: "direct"
-        update-types: ["patch", "minor", "major"]
-      - dependency-type: "dev"
-        update-types: ["patch", "minor", "major"]
+        # Removed the update-types field as it is not supported here
     # ignore:
     #   - dependency-name: "some-package-name"
     #     versions: ["1.2.3"]
@@ -23,7 +23,6 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
-    registry: "ghcr.io"
     allow:
       - dependency-name: "flxbl-io/sfp-rc"
     commit-message:
