@@ -10,7 +10,7 @@ on:
 
 jobs:
   quickbuild:
-    uses: b64hub/dx-actions/.github/workflows/quickbuild.yml@main
+    uses: b64hub/sf-actions/.github/workflows/quickbuild.yml@main
     with:
       datadog: true
     secrets:
@@ -19,7 +19,7 @@ jobs:
       DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
   deploy-dev:
-    uses: b64hub/dx-actions/.github/workflows/deploy.yml@main
+    uses: b64hub/sf-actions/.github/workflows/deploy.yml@main
     needs: quickbuild
     with:
       org-alias: dev
@@ -31,7 +31,7 @@ jobs:
       DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
   build-publish:
-    uses: b64hub/dx-actions/.github/workflows/build-publish.yml@main
+    uses: b64hub/sf-actions/.github/workflows/build-publish.yml@main
     permissions:
       packages: write
       contents: write

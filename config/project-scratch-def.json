@@ -1,8 +1,8 @@
 {
-  "orgName": "DX@Scale Demo Org",
+  "orgName": "Company Scratch Org",
   "edition": "Developer",
   "hasSampleData": false,
-  "features": ["Communities", "Walkthroughs", "EnableSetPasswordInApi"],
+  "features": ["Communities", "EnableSetPasswordInApi"],
   "language": "en_US",
   "settings": {
     "communitiesSettings": {

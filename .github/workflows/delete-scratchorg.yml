@@ -16,7 +16,7 @@ jobs:
   delete-scratchorg:
     name: "Return a used scratch org to the pool ${{ github.event.inputs.username }}"
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:latest
+    container: ghcr.io/flxbl-io/sfp-rc:release-Mar24
 
     steps:
       - name: "Authenticate Dev Hub"

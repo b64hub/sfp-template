@@ -1,0 +1,10 @@
+excludeArtifacts:
+  - src-env-specific-alias-pre
+  - src-env-specific-pre
+releasedefinitionProperties:
+  promotePackagesBeforeDeploymentToOrg: uat
+  skipIfAlreadyInstalled: true
+  changelog:
+    workItemFilters:
+      - ""
+    workItemUrl: ""

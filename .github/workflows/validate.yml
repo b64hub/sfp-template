@@ -1,11 +1,11 @@
 name: "PR Validation - Auto Triggered"
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main
-      - release/**
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   branches:
+  #     - main
+  #     - release/**
 
   workflow_dispatch:
 
@@ -18,7 +18,7 @@ jobs:
   validate:
     name: "Validate Changed Packages"
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:latest
+    container: ghcr.io/flxbl-io/sfp-rc:release-Mar24
 
     steps:
       - uses: actions/checkout@v2

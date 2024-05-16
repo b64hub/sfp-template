@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         pool-tag: [snapshot, ci, dev]
-    uses: b64hub/dx-actions/.github/workflows/clean-pool.yml@main
+    uses: b64hub/sf-actions/.github/workflows/clean-pool.yml@main
     with:
       pool-tag: ${{ matrix.pool-tag }}
       datadog: true
