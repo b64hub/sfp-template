@@ -1,0 +1,6 @@
+{
+  "sandboxName": "DEV",
+  "licenseType": "Developer",
+  "description": "DEV Sandbox, used as target for deployments after merges to main branch. Also used as a review and verification environment.",
+  "autoActivate": true
+}

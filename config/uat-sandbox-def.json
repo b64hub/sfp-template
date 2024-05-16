@@ -1,0 +1,6 @@
+{
+  "sandboxName": "UAT",
+  "licenseType": "Developer",
+  "description": "UAT Sandbox, used as a test release and verification environment. Also used as a test environment for end-users.",
+  "autoActivate": true
+}
