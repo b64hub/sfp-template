@@ -39,6 +39,6 @@
     ]
   },
   "dependencies": {
-    "@dxatscale/sfpowerscripts": "^21.1.0"
+    "@flxbl-io/sfp": "^37.1.4"
   }
 }
