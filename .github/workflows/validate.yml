@@ -1,16 +1,19 @@
 name: "PR Validation - Auto Triggered"
 
 on:
-  # pull_request:
-  #   types: [opened, synchronize, reopened]
-  #   branches:
-  #     - main
-  #     - release/**
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+      - release/**
+    path:
+      - src/**
+      - src**
 
   workflow_dispatch:
 
 env:
-  SFPOWERSCRIPTS_DATADOG: "true"
+  SFPOWERSCRIPTS_DATADOG: "false"
   SFPOWERSCRIPTS_DATADOG_HOST: "${{ vars.DATADOG_HOST }}"
   SFPOWERSCRIPTS_DATADOG_API_KEY: "${{ secrets.DATADOG_API_KEY }}"
 
@@ -26,27 +29,29 @@ jobs:
           fetch-depth: 0
 
       - name: "Authenticate Dev Hub"
+        env:
+          AUTH_URL: ${{ secrets.DEVHUB_SFDX_AUTH_URL }}
         run: |
-          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
+          echo $AUTH_URL > ./authfile
           sf org login sfdx-url -f authfile -a devhub
 
       # Validate source and trigger test
       - name: "Push source to scratch org"
-        run: "sfp orchestrator:validate -p ci -v devhub -x"
+        run: "sfp validate -p ci -v devhub -x"
 
-  # static:
-  #   name: "static-analysis-of-Apex-classes-using-PMD"
-  #   runs-on: ubuntu-latest
-  #   container: ghcr.io/dxatscale/sfpowerscripts
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
+  static:
+    name: "PMD Static Apex Code Analysis"
+    runs-on: ubuntu-latest
+    container: ghcr.io/dxatscale/sfpowerscripts
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-  #     - name: "Run PMD static code analysis"
-  #       shell: bash
-  #       run: |
-  #         sfdx sfpowerscripts:analyze:pmd -b --sourcedir=src/core-crm -o core-crm-pmd-output
+      - name: "Run PMD static code analysis"
+        shell: bash
+        run: |
+          sf scanner run -p ./src --target "./**/**.cls" --outfile scanner-output.xml --format=junit
 
   # validate-package-coverage:
   #   name: "validate metadata coverage for unlocked packages"
