@@ -39,6 +39,6 @@
     ]
   },
   "dependencies": {
-    "@dxatscale/sfpowerscripts": "^21.1.0"
+    "@dxatscale/sfpowerscripts": "^25.5.3"
   }
 }
