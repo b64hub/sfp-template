@@ -39,6 +39,6 @@
     ]
   },
   "dependencies": {
-    "@flxbl-io/sfp": "^37.1.4"
+    "@flxbl-io/sfp": "^38.4.1"
   }
 }
