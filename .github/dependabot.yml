@@ -17,7 +17,7 @@ updates:
       dependencies:
         patterns:
           - "*"
-        dependency-type: "direct"
+        dependency-type: "production"
     commit-message:
       prefix: "npm: "
 
